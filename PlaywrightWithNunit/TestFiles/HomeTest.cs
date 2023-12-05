@@ -34,7 +34,8 @@ namespace PlaywrightWithNunit.TestFiles
             await Expect(textLocator).ToHaveTextAsync("What's New");
 
             // Signout
-            await Page.Locator("//span[contains(@class,'active')]//span[text() = 'Change']").ClickAsync();
+            await Page.WaitForTimeoutAsync(1000);
+            await Page.Locator("//div[contains(@class,'header')]//span[contains(text(),'Change')]").ClickAsync();
             await Page.Locator("//div[@aria-hidden='false']//a[normalize-space()='Sign Out']").ClickAsync();
 
             //Validate Signout
